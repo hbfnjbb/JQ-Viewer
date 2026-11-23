@@ -1,33 +1,46 @@
-# JQ Viewer
+# JQ Viewer（优化线路版）
 
 JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux 桌面端。它把搜索、收藏、下载、本地阅读、PDF 导入导出和批量解析放在同一套界面里，方便整理和阅读漫画。
 
-[![Version](https://img.shields.io/badge/Version-2.2.3-brightgreen.svg)](https://github.com/JUKOMU/JQ-Viewer/releases)
-[![Android](https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white)](https://github.com/JUKOMU/JQ-Viewer/releases)
-[![Windows](https://img.shields.io/badge/Desktop-Windows-0078D4?logo=windows&logoColor=white)](https://github.com/JUKOMU/JQ-Viewer/releases)
-[![Linux](https://img.shields.io/badge/Desktop-Linux-FCC624?logo=linux&logoColor=black)](https://github.com/JUKOMU/JQ-Viewer/releases)
+> 本仓库是 [JQ Viewer](https://github.com/JUKOMU/JQ-Viewer) 的**优化线路版本**：源码沿用上游原版，版权归原作者 JUKOMU 所有，遵循 MIT License，这里只发布优化线路后的安装包和版本说明。
+
+[![Version](https://img.shields.io/badge/Version-2.2.3%20mod%20v6-brightgreen.svg)](https://github.com/hdjcj496749/JQ-Viewer/releases)
+[![Android](https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white)](https://github.com/hdjcj496749/JQ-Viewer/releases)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Releases](https://img.shields.io/badge/Download-Releases-blue.svg)](https://github.com/JUKOMU/JQ-Viewer/releases)
 
 > JQ Viewer 是个人项目，与 JMComic 官方无关。项目本身不包含漫画资源，请遵守所在地法律法规和目标站点规则。
+
+## 下载
+
+| 版本 | 安装包 | SHA-256 |
+| --- | --- | --- |
+| 2.2.3 mod v6 | [JQViewer_2.2.3_mod_v6.apk](https://aka.doubaocdn.com/s/IMY5j0dVuS) | `d421425169edd61b150ad211595473beb0f3f99a165c460b7a2449c8d89214b7` |
+
+- Android 7.0 及以上。
+- 安装包签名与原版不同，若手机上已装原版，请先卸载再安装；卸载会清除应用内的收藏和设置，建议提前备份。
+- 版本说明见 [docs/releases/v2.2.3-mod-v6.md](docs/releases/v2.2.3-mod-v6.md)。
+
+## 本版改动
+
+- 新增可用线路，API 线路固定为当前可用的 8 条。
+- 图片线路探测改为多路并发：4 路分批，每条线路 5 张图 × 2 轮，缩短首图等待时间。
+- 其他功能与上游 2.2.3 保持一致。
+
+线路可达性会随网络和地区变化，加载失败时可在设置中切换线路。
 
 ## 使用文档
 
 使用说明见 [用户文档](docs/sources/index.md)，涵盖安装、搜索、阅读、收藏、下载导出、历史、设置和常见问题。
 
-## 项目状态
+## 项目说明
 
-项目目前同时维护 Android 移动端和 Desktop 桌面端，功能和发行版本以 [Releases](https://github.com/JUKOMU/JQ-Viewer/releases) 页面为准。欢迎提交 Issue 和 Pull Request。
+本仓库是上游 [JUKOMU/JQ-Viewer](https://github.com/JUKOMU/JQ-Viewer) 的 fork，源码保持上游原样，不在此仓库维护代码改动。桌面端（Windows/Linux）请前往 [上游 Releases](https://github.com/JUKOMU/JQ-Viewer/releases) 下载。
 
 | 平台 | 支持情况 |
 | --- | --- |
-| Android | 支持 Android 7.0 及以上版本 |
-| Windows | 支持 Windows x64；Windows on ARM 使用 x64 应用仿真 |
-| Linux | 支持 x64 和 arm64 |
-
-> 这个项目最初完全是按个人的想法开发的，很多功能在规划时只考虑了我自己的想法和用途，还远远没有达到能够给大众使用的软件的质量。尽管如此，还是逐渐有人开始使用这款应用，也有人提出了建议和问题，帮助项目完善。开发过程中也得到了朋友的大力帮助。
-
-> 这个项目仍会持续维护，Issue 和 Pull Request 依然会看，开发速度会根据实际情况调整。
+| Android | 支持 Android 7.0 及以上版本（本仓库提供优化线路版 APK） |
+| Windows | 支持 Windows x64；Windows on ARM 使用 x64 应用仿真（上游发行包） |
+| Linux | 支持 x64 和 arm64（上游发行包） |
 
 ---
 
@@ -64,11 +77,11 @@ JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux �
 ### 下载与 PDF
 
 | 下载队列 | 下载管理 | 后台进度 |
-| --- | --- |----------------------------------------------------------------------------------------------------------------------|
+| --- | --- |---|
 | <img width="260" alt="下载队列" src="https://github.com/user-attachments/assets/85aef0b1-d80e-44c9-a02a-29379a9806c8" /> | <img width="260" alt="下载管理" src="https://github.com/user-attachments/assets/6f227a1c-efa5-4788-ae1f-b96c83e0cbae" /> | <img width="260" alt="下载通知" src="https://github.com/user-attachments/assets/083a4bb5-c8a7-43e2-b1ea-80dc7bb6b4b8" /> |
 
 | PDF 导出 | 多章节导出 | PDF 导入匹配 |
-| --- | --- |------------------------------------------------------------------------------------------------------------------------|
+| --- | --- |---|
 | <img width="260" alt="PDF 导出" src="https://github.com/user-attachments/assets/b61c714b-4a2a-4ac5-a215-6a03a3bdaea8" /> | <img width="260" alt="多章节导出" src="https://github.com/user-attachments/assets/731de6a5-be0b-424e-b6cc-a4fc6f8fe044" /> | <img width="260" alt="PDF 导入匹配" src="https://github.com/user-attachments/assets/475ad932-c96c-4a24-bf4b-5d64faa6e5f3" /> |
 
 | PDF 管理 |  |  |
@@ -78,7 +91,7 @@ JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux �
 ### 设置
 
 | 查看图片缓存 | 查看网络状态 | 导出设置 |
-| --- | --- |----------------------------------------------------------------------------------------------------------------------|
+| --- | --- |---|
 | <img width="260" alt="查看图片缓存" src="https://github.com/user-attachments/assets/35fc1994-161c-46f8-8415-d89499905859" /> | <img width="260" alt="查看网络状态" src="https://github.com/user-attachments/assets/4229b9bb-203a-4e24-860e-c7a378337c26" /> | <img width="260" alt="下载通知" src="https://github.com/user-attachments/assets/50a0ea1f-0e0c-4ca0-a203-f5d17bb897b8" /> |
 
 </details>
@@ -121,19 +134,17 @@ JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux �
 
 ## 安装
 
-前往 [Releases](https://github.com/JUKOMU/JQ-Viewer/releases) 下载对应平台的发行包：
+本仓库只提供 Android 端的优化线路版 APK，前往本仓库 Releases 下载。桌面端请前往 [上游 Releases](https://github.com/JUKOMU/JQ-Viewer/releases)。
 
 - Android：下载 APK 安装。应用内可以在“设置 > 关于 > 检查更新”查看最新版本。
-- Windows：下载安装版 EXE，或使用便携版 ZIP。
-- Linux：下载 DEB、RPM 安装包，或使用便携版 TAR.GZ。
-
-Android 最低支持 7.0。Windows 和 Linux 的具体架构请根据发行包名称选择；Windows on ARM 使用 Windows x64 包和系统提供的 x64 仿真运行。
+- Windows：下载安装版 EXE，或使用便携版 ZIP（上游发行包）。
+- Linux：下载 DEB、RPM 安装包，或使用便携版 TAR.GZ（上游发行包）。
 
 ---
 
 ## 开发构建
 
-项目主体是 Vue 3 + Ionic。Android 端使用 Capacitor 和原生插件，负责下载、缓存、PDF、OCR 等能力；Desktop 端使用 Java 21 宿主和本地服务提供对应能力。接口调用依赖 [JMComic-Api-Java](https://github.com/JUKOMU/JMComic-Api-Java)。
+源码与上游一致，构建方式请参考 [上游仓库](https://github.com/JUKOMU/JQ-Viewer)。项目主体是 Vue 3 + Ionic。Android 端使用 Capacitor 和原生插件，负责下载、缓存、PDF、OCR 等能力；Desktop 端使用 Java 21 宿主和本地服务提供对应能力。接口调用依赖 [JMComic-Api-Java](https://github.com/JUKOMU/JMComic-Api-Java)。
 
 通用构建环境需要 Node.js、JDK 21 和 Maven。构建 Android 还需要 Android SDK：
 
@@ -155,24 +166,8 @@ npm run desktop:sync -- --platform windows
 mvn -f desktop/pom.xml package
 ```
 
-生成 Desktop 发行包时，需要在目标平台原生环境执行，并指定平台、架构和输出目录。例如：
-
-```bash
-npm run desktop:package -- --platform windows --arch x64 --output dist/desktop
-npm run desktop:package -- --platform linux --arch x64 --output dist/desktop
-npm run desktop:package -- --platform linux --arch arm64 --output dist/desktop
-```
-
-桌面端打包脚本会先构建前端资源，再编译 Java 宿主并生成对应平台的安装包和便携包。
-
 ---
 
 ## 许可证
 
-[MIT License](LICENSE)
-
----
-
-## 
-
-![访问统计](/assets/release-visits.png)
+[MIT License](LICENSE)，版权归原作者 JUKOMU 所有。
