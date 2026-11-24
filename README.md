@@ -2,28 +2,37 @@
 
 JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux 桌面端。它把搜索、收藏、下载、本地阅读、PDF 导入导出和批量解析放在同一套界面里，方便整理和阅读漫画。
 
-> 本仓库是 [JQ Viewer](https://github.com/JUKOMU/JQ-Viewer) 的**优化线路版本**：源码沿用上游原版，版权归原作者 JUKOMU 所有，遵循 MIT License，这里只发布优化线路后的安装包和版本说明。
+> 这是优化线路的版本：新增了几条线路，同时将图片线路的探测改成多条并发提高线路探测速度。
 
-[![Version](https://img.shields.io/badge/Version-2.2.3%20mod%20v6-brightgreen.svg)](https://github.com/hdjcj496749/JQ-Viewer/releases)
-[![Android](https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white)](https://github.com/hdjcj496749/JQ-Viewer/releases)
+> 本仓库是 [JQ Viewer](https://github.com/JUKOMU/JQ-Viewer) 的 **fork**：源码沿用上游原版，版权归原作者 JUKOMU 所有，遵循 MIT License，这里只发布优化线路后的安装包和版本说明。
+
+[![Version](https://img.shields.io/badge/Version-2.2.3%20mod%20v6.1-brightgreen.svg)](https://github.com/hbfnjbb/JQ-Viewer/releases)
+[![Android](https://img.shields.io/badge/Android-7.0%2B%20arm64-3DDC84?logo=android&logoColor=white)](https://github.com/hbfnjbb/JQ-Viewer/releases)
+[![Windows](https://img.shields.io/badge/Windows-x64-0078D4?logo=windows&logoColor=white)](https://github.com/hbfnjbb/JQ-Viewer/releases)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > JQ Viewer 是个人项目，与 JMComic 官方无关。项目本身不包含漫画资源，请遵守所在地法律法规和目标站点规则。
 
 ## 下载
 
-| 版本 | 安装包 | SHA-256 |
+| 平台 | 安装包 | SHA-256 |
 | --- | --- | --- |
-| 2.2.3 mod v6 | [JQViewer_2.2.3_mod_v6.apk](https://aka.doubaocdn.com/s/IMY5j0dVuS) | `d421425169edd61b150ad211595473beb0f3f99a165c460b7a2449c8d89214b7` |
+| Android 7.0+（arm64-v8a） | [JQViewer-2.2.3-v6.1-arm64-v8a.apk](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/JQViewer-2.2.3-v6.1-arm64-v8a.apk) | `e687211c49254c3ef84b84c524013dd10681d920824be5c2a704175bbf5f0657` |
+| Windows x64 安装版 | [JQ-Viewer-2_2_3-v6.1-windows-x64-installer.exe](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/JQ-Viewer-2_2_3-v6.1-windows-x64-installer.exe) | `fa5e43c7212c0e33fbd3de9b9428777384727331d8674921bcde6cbc9e26ba5b` |
+| Windows x64 便携版 | [JQ-Viewer-2_2_3-v6.1-windows-x64-portable.zip](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/JQ-Viewer-2_2_3-v6.1-windows-x64-portable.zip) | `32678e33a9ac75d58f73ff2ed6dde03f6f9ce17abb5d5fdb0377559aa2dcf045` |
 
-- Android 7.0 及以上。
-- 安装包签名与原版不同，若手机上已装原版，请先卸载再安装；卸载会清除应用内的收藏和设置，建议提前备份。
-- 版本说明见 [docs/releases/v2.2.3-mod-v6.md](docs/releases/v2.2.3-mod-v6.md)。
+- Android 版仅包含 `arm64-v8a`，适用于绝大多数近年的 arm64 设备；Android 7.0 及以上。
+- Windows 安装版为 EXE 安装包；便携版为 ZIP，解压后运行。
+- 安装包签名与上游原版不同，若设备上已装原版，请先卸载再安装；卸载会清除应用内的收藏和设置，建议提前备份。
+- 版本说明见 [docs/releases/v2.2.3-mod-v6.1.md](docs/releases/v2.2.3-mod-v6.1.md)。
+- 校验值汇总见 [SHA256SUMS-v6.1.txt](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/SHA256SUMS-v6.1.txt)。
 
 ## 本版改动
 
-- 新增可用线路，API 线路固定为当前可用的 8 条。
+- API 线路固定为当前可用的 7 条，删除不可达的 `www.cdnawc.net`，并将拼写错误的 `www.cdnhik.net` 修正为 `www.cdnhjk.net`。
+- 图片线路内置 12 条，新增 `cdn-msp3.jmapiproxy1.cc`。
 - 图片线路探测改为多路并发：4 路分批，每条线路 5 张图 × 2 轮，缩短首图等待时间。
+- 跳过运行期远端 API 域名覆盖，避免内置线路被服务端旧列表替换。
 - 其他功能与上游 2.2.3 保持一致。
 
 线路可达性会随网络和地区变化，加载失败时可在设置中切换线路。
@@ -34,12 +43,12 @@ JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux �
 
 ## 项目说明
 
-本仓库是上游 [JUKOMU/JQ-Viewer](https://github.com/JUKOMU/JQ-Viewer) 的 fork，源码保持上游原样，不在此仓库维护代码改动。桌面端（Windows/Linux）请前往 [上游 Releases](https://github.com/JUKOMU/JQ-Viewer/releases) 下载。
+本仓库是上游 [JUKOMU/JQ-Viewer](https://github.com/JUKOMU/JQ-Viewer) 的 fork，保留原作者、MIT License 和 `forked from JUKOMU/JQ-Viewer` 关系。源码保持上游原样，优化线路改动以安装包和补丁形式发布，不在此仓库维护代码改动。Windows 优化线路版由本仓库发布；Linux 请前往 [上游 Releases](https://github.com/JUKOMU/JQ-Viewer/releases) 下载。
 
 | 平台 | 支持情况 |
 | --- | --- |
 | Android | 支持 Android 7.0 及以上版本（本仓库提供优化线路版 APK） |
-| Windows | 支持 Windows x64；Windows on ARM 使用 x64 应用仿真（上游发行包） |
+| Windows | 支持 Windows x64；Windows on ARM 使用 x64 应用仿真（本仓库提供优化线路版安装包） |
 | Linux | 支持 x64 和 arm64（上游发行包） |
 
 ---
@@ -134,10 +143,10 @@ JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux �
 
 ## 安装
 
-本仓库只提供 Android 端的优化线路版 APK，前往本仓库 Releases 下载。桌面端请前往 [上游 Releases](https://github.com/JUKOMU/JQ-Viewer/releases)。
+本仓库提供 Android 与 Windows 端的优化线路版安装包，前往本仓库 [Releases](https://github.com/hbfnjbb/JQ-Viewer/releases) 下载。Linux 端请前往 [上游 Releases](https://github.com/JUKOMU/JQ-Viewer/releases)。
 
-- Android：下载 APK 安装。应用内可以在“设置 > 关于 > 检查更新”查看最新版本。
-- Windows：下载安装版 EXE，或使用便携版 ZIP（上游发行包）。
+- Android：下载 arm64-v8a APK 安装。应用内可以在“设置 > 关于 > 检查更新”查看最新版本。
+- Windows：下载安装版 EXE，或使用便携版 ZIP。
 - Linux：下载 DEB、RPM 安装包，或使用便携版 TAR.GZ（上游发行包）。
 
 ---
