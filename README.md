@@ -2,11 +2,11 @@
 
 JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux 桌面端。它把搜索、收藏、下载、本地阅读、PDF 导入导出和批量解析放在同一套界面里，方便整理和阅读漫画。
 
-> 这是优化线路的版本：新增了几条线路，同时将图片线路的探测改成多条并发提高线路探测速度。
+> 这是优化线路的版本：线路表本地持久化，图片按页在多条线路间轮换，探测并发可调，启动更快。
 
 > 本仓库是 [JQ Viewer](https://github.com/JUKOMU/JQ-Viewer) 的 **fork**：源码沿用上游原版，版权归原作者 JUKOMU 所有，遵循 MIT License，这里只发布优化线路后的安装包和版本说明。
 
-[![Version](https://img.shields.io/badge/Version-2.2.3%20mod%20v6.1-brightgreen.svg)](https://github.com/hbfnjbb/JQ-Viewer/releases)
+[![Version](https://img.shields.io/badge/Version-2.2.3%20mod%20v6.2-brightgreen.svg)](https://github.com/hbfnjbb/JQ-Viewer/releases)
 [![Android](https://img.shields.io/badge/Android-7.0%2B%20arm64-3DDC84?logo=android&logoColor=white)](https://github.com/hbfnjbb/JQ-Viewer/releases)
 [![Windows](https://img.shields.io/badge/Windows-x64-0078D4?logo=windows&logoColor=white)](https://github.com/hbfnjbb/JQ-Viewer/releases)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -17,22 +17,25 @@ JMComic 第三方漫画阅读器，支持 Android 移动端和 Windows、Linux �
 
 | 平台 | 安装包 | SHA-256 |
 | --- | --- | --- |
-| Android 7.0+（arm64-v8a） | [JQViewer-2.2.3-v6.1-arm64-v8a.apk](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/JQViewer-2.2.3-v6.1-arm64-v8a.apk) | `e687211c49254c3ef84b84c524013dd10681d920824be5c2a704175bbf5f0657` |
-| Windows x64 安装版 | [JQ-Viewer-2_2_3-v6.1-windows-x64-installer.exe](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/JQ-Viewer-2_2_3-v6.1-windows-x64-installer.exe) | `fa5e43c7212c0e33fbd3de9b9428777384727331d8674921bcde6cbc9e26ba5b` |
-| Windows x64 便携版 | [JQ-Viewer-2_2_3-v6.1-windows-x64-portable.zip](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/JQ-Viewer-2_2_3-v6.1-windows-x64-portable.zip) | `32678e33a9ac75d58f73ff2ed6dde03f6f9ce17abb5d5fdb0377559aa2dcf045` |
+| Android 7.0+（arm64-v8a） | [JQViewer-2.2.3-v6.2-arm64-v8a.apk](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.2/JQViewer-2.2.3-v6.2-arm64-v8a.apk) | `7ca8167c3546a30d4a2566ced70887e4050eb7908566a7f6255a44e0e8d77269` |
+| Windows x64 安装版 | [JQ-Viewer-2_2_3-v6.2-windows-x64-installer.exe](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.2/JQ-Viewer-2_2_3-v6.2-windows-x64-installer.exe) | `edca51f53e16e823b692db03ef6aae0ed204e91d6925a30e5649a81f5fc06297` |
+| Windows x64 便携版 | [JQ-Viewer-2_2_3-v6.2-windows-x64-portable.zip](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.2/JQ-Viewer-2_2_3-v6.2-windows-x64-portable.zip) | `a9354ac32632cfa7498c5aa4e256e6f0c63353fe66d0ab084e153edf0b0ecfe7` |
 
 - Android 版仅包含 `arm64-v8a`，适用于绝大多数近年的 arm64 设备；Android 7.0 及以上。
 - Windows 安装版为 EXE 安装包；便携版为 ZIP，解压后运行。
 - 安装包签名与上游原版不同，若设备上已装原版，请先卸载再安装；卸载会清除应用内的收藏和设置，建议提前备份。
-- 版本说明见 [docs/releases/v2.2.3-mod-v6.1.md](docs/releases/v2.2.3-mod-v6.1.md)。
-- 校验值汇总见 [SHA256SUMS-v6.1.txt](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.1/SHA256SUMS-v6.1.txt)。
+- 版本说明见 [docs/releases/v2.2.3-mod-v6.2.md](docs/releases/v2.2.3-mod-v6.2.md)。
+- 校验值汇总见 [SHA256SUMS-v6.2.txt](https://github.com/hbfnjbb/JQ-Viewer/releases/download/v2.2.3-mod-v6.2/SHA256SUMS-v6.2.txt)。
 
 ## 本版改动
 
-- API 线路固定为当前可用的 7 条，删除不可达的 `www.cdnawc.net`，并将拼写错误的 `www.cdnhik.net` 修正为 `www.cdnhjk.net`。
-- 图片线路内置 12 条，新增 `cdn-msp3.jmapiproxy1.cc`。
-- 图片线路探测改为多路并发：4 路分批，每条线路 5 张图 × 2 轮，缩短首图等待时间。
-- 跳过运行期远端 API 域名覆盖，避免内置线路被服务端旧列表替换。
+- 图片按页多线路：每张图单独从运行池轮换 Host，失败自动换线，最多重试 3 条线路。
+- 线路表本地持久化：API 与图片线路各一张表，云端新增线路只做去重追加，启动只读本地表、不预探活。
+- 图片线路探测并发数可在设置页调整（1–8，默认 4），下次线路探测生效。
+- 启动提速：API 探活改为 2 秒超时的独立短连接，`ready` 后后台增量刷新线路；测速改为每条线路 1 张图 1 轮、只取前 64 KB，并延后约 6 秒执行。
+- 自动模式保留全部图片线路，测速结果只用于排序；手动线路不可达时自动回退。
+- 网络状态页：红点只显示具体毫秒数，全部超时保留上次线路状态，自动优选不再停在“读取中”。
+- Windows 桌面端同步以上线路改动，安装包为用户级安装。
 - 其他功能与上游 2.2.3 保持一致。
 
 线路可达性会随网络和地区变化，加载失败时可在设置中切换线路。
